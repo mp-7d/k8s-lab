@@ -19,6 +19,7 @@ if [ ! -f config.sh ]; then
     curl -fsSL https://github.com/actions/runner/releases/download/v2.337.0/actions-runner-linux-x64-2.337.0.tar.gz | tar -xz
     sudo ./bin/installdependencies.sh > /dev/null
 fi
+./config.sh remove
 ./config.sh --unattended --replace --url "https://github.com/$GITHUB_REPOSITORY" --token "$TOKEN" --name codespace --labels k8s-lab
 
 nohup ./run.sh > runner.log 2>&1 &
